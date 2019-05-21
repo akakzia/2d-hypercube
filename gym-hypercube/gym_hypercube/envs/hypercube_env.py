@@ -435,8 +435,8 @@ class HypercubeEnv(gym.Env):
 
     def render(self, mode='human'):
         if self.n == 2:
-            screen_width = 200
-            screen_height = 200
+            screen_width = 400
+            screen_height = 400
 
             world_width = self.max_position*2
             scale = screen_width/world_width
