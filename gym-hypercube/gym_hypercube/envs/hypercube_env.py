@@ -290,6 +290,8 @@ class HypercubeEnv(gym.Env):
         return velocity
 
     def sample_tasks(self, num_tasks):
+        if self.env_description['nb_target'] == 0:
+            return [{'goal': np.asarray([2., 2.])} for e in range(num_tasks)]
         if self.env_description['generation_zone'] == 'a':
             goals = self.np_random.uniform(low=[-self.max_position, 0], high=[0, self.max_position],
                                            size=(num_tasks, self.n))
@@ -433,8 +435,8 @@ class HypercubeEnv(gym.Env):
 
     def render(self, mode='human'):
         if self.n == 2:
-            screen_width = 400
-            screen_height = 400
+            screen_width = 200
+            screen_height = 200
 
             world_width = self.max_position*2
             scale = screen_width/world_width
